@@ -54,8 +54,9 @@ function termuxOS() {
 }
 #vulnx install function for debian operating system. linux.
 function debianOS(){
-    echo -e "$red [$green+$red]$off Installing python3... ";
-    sudo apt-get install -y python3
+command -v python >/dev/null 2>&1 || { echo -e >&2 "$red [$green+$red]$off [+] Installing python3...";sleep 1 ; sudo apt-get install -y python3}
+# ==>   echo -e "$red [$green+$red]$off Installing python3... ";
+# ==>   sudo apt-get install -y python3
     pip install -r ./requirements.txt
     echo -e "$red [$green+$red]$off Checking directories... "
     if [ -d "/usr/share/VulnX" ]; then
